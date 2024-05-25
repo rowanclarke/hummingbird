@@ -2,6 +2,8 @@ meta:
   engine: 4.1.0
 units:
   u: 16.5
+  mcu_width: 17.78
+  mcu_height: 33.02
   pinky_stagger: 5u/4
   pinky_splay: 5
   ring_splay: 3
@@ -47,6 +49,14 @@ points:
           splay: -5
           origin: [-u/2, -u/2]
         tucky.key.bind: [2u, u/2, 0, 0]
+    mcu:
+      anchor:
+        ref: matrix_inner_home
+        shift: [u/2 + mcu_width/2 + 1.3, 3/2u - mcu_height/2]
+      key:
+        width: mcu_width
+        height: mcu_height
+        bind: [0, 0, u, u]
 outlines:
   keys:
     - what: rectangle
@@ -62,6 +72,15 @@ outlines:
         - /matrix/
         - /thumb/
       bound: true
+    - what: rectangle
+      size: [mcu_width, mcu_height]
+      where: mcu
+      bound: true
+    - what: rectangle
+      size: [u, 2u]
+      where: thumb_reachy
+      adjust.shift: [u, u/2]
+      operation: subtract
       expand: 2
       joints: 2
 pcbs:
