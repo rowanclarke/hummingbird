@@ -92,3 +92,18 @@ pcbs:
       keys:
         outline: keys
         layer: User.Comments
+    footprints:
+      switches:
+        what: choc
+        where:
+          - /matrix/
+          - /thumb/
+        params:
+          from: GND
+          to: "{{name}}"
+          keycaps: false
+          hotswap: true
+      mcu:
+        what: nicenano
+        where: mcu
+        adjust.rotate: 270
