@@ -32,6 +32,10 @@ points:
         index.key.stagger: -u/4
         inner.key.stagger: -u/2
         inner.rows.bottom.skip: true
+        pinky.rows.top.bind: [0, u, 0, 0]
+        ring.key.bind: [0, u, 0, 0]
+        ring.rows.bottom.bind: [0, u, 0, u/2]
+        index.rows.bottom.bind: [0, 0, 0, u]
     thumb:
       anchor:
         ref: matrix_inner_bottom
@@ -42,6 +46,7 @@ points:
           stagger: 0
           splay: -5
           origin: [-u/2, -u/2]
+        tucky.key.bind: [2u, u/2, 0, 0]
 outlines:
   keys:
     - what: rectangle
@@ -50,10 +55,21 @@ outlines:
         - /matrix/
         - /thumb/
       operation: stack
+  board:
+    - what: rectangle
+      size: u
+      where:
+        - /matrix/
+        - /thumb/
+      bound: true
+      expand: 2
+      joints: 2
 pcbs:
   hummingbird:
     template: kicad8
     outlines:
+      main:
+        outline: board
       keys:
         outline: keys
         layer: User.Comments
