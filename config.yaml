@@ -1,0 +1,59 @@
+meta:
+  engine: 4.1.0
+units:
+  u: 16.5
+  pinky_stagger: 5u/4
+  pinky_splay: 5
+  ring_splay: 3
+  thumb_distance: 14 
+  reachy_splay: 5
+points:
+  rotate: pinky_splay + ring_splay
+  key:
+    width: u
+    height: u
+    autobind: 0
+  zones:
+    matrix:
+      rows:
+        bottom:
+        home:
+        top:
+      columns:
+        pinky.rows.bottom.skip: true
+        ring.key:
+          stagger: pinky_stagger
+          splay: -pinky_splay
+          origin: [-u/2, -u/2]
+        middle.key:
+          stagger: u/4
+          splay: -ring_splay
+          origin: [-u/2, -u/2]
+        index.key.stagger: -u/4
+        inner.key.stagger: -u/2
+        inner.rows.bottom.skip: true
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [0, -thumb_distance]
+      columns:
+        tucky:
+        reachy.key:
+          stagger: 0
+          splay: -5
+          origin: [-u/2, -u/2]
+outlines:
+  keys:
+    - what: rectangle
+      size: u
+      where:
+        - /matrix/
+        - /thumb/
+      operation: stack
+pcbs:
+  hummingbird:
+    template: kicad8
+    outlines:
+      keys:
+        outline: keys
+        layer: User.Comments
