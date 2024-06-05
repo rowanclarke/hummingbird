@@ -91,13 +91,20 @@ pcbs:
         outline: board
       keys:
         outline: keys
-        layer: User.Comments
+        layer: Dwgs.User
     footprints:
       switches:
         what: choc
-        where:
-          - /matrix/
-          - /thumb/
+        where: /thumb/
+        params:
+          from: GND
+          to: "{{name}}"
+          keycaps: false
+          hotswap: true
+      rotated_switches:
+        what: choc
+        where: /matrix/
+        adjust.rotate: 180
         params:
           from: GND
           to: "{{name}}"
