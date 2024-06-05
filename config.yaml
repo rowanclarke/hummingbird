@@ -114,3 +114,21 @@ pcbs:
         what: nicenano
         where: mcu
         adjust.rotate: 270
+        params:
+          BP: battery_pos
+          BN: battery_neg
+          P21: matrix_ring_top
+          P20: matrix_middle_top
+          P19: matrix_index_top
+          P18: matrix_inner_top
+          P15: matrix_ring_home
+          P14: matrix_middle_home
+          P16: matrix_index_home
+          P10: matrix_inner_home
+          P2: matrix_pinky_top
+          P3: matrix_pinky_home
+          P4: matrix_ring_bottom
+          P5: matrix_middle_bottom
+          P6: matrix_index_bottom
+          P7: thumb_tucky
+          P8: thumb_reachy
