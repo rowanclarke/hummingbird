@@ -2,7 +2,6 @@
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
-	(general
 		(thickness 1.6)
 		(legacy_teardrops no)
 	)
@@ -12,7 +11,6 @@
 		(date "2024-05-27")
 		(rev "v1.0.0")
 		(company "Unknown")
-	)
 	(layers
 		(0 "F.Cu" signal)
 		(31 "B.Cu" signal)

@@ -6,6 +6,7 @@ units:
   p: 1
   kx: ux + p
   ky: uy + p
+  pitch: 2.54
   mcu_width: 17.78
   mcu_height: 33.02
   battery_pad: 5
@@ -115,6 +116,14 @@ points:
         pos.key.reversed_net: "B+"
         neg.key.net: "B-"
         neg.key.reversed_net: "LIVE"
+    switch:
+      anchor:
+        ref: mcu
+        shift: [0, 4pitch]
+        rotate: 180
+      key:
+        width: 7.85
+        height: 2.7
 outlines:
   keys:
     - what: rectangle
@@ -210,3 +219,18 @@ pcbs:
         params:
           SIG: "{{reversed_net}}"
           reverse: true
+      switch:
+        what: switch
+        where: /switch/
+        params:
+          left: B+
+          right: ""
+          common: LIVE
+          reverse: true
+      reversed_switch:
+        what: switch
+        where: /switch/
+        params:
+          left: B-
+          right: ""
+          common: LIVE
