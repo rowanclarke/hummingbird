@@ -87,7 +87,7 @@ module.exports = {
       
         ${''/* and now the actual pins */}
         (pad 1 thru_hole circle (at -15.24 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.BP})
-        (pad 2 thru_hole rect (at -12.7 ${def_pos}7.62 ${p.r}) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.RAW})
+        (pad 2 thru_hole circle (at -12.7 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.RAW})
         (pad 3 thru_hole circle (at -10.16 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND})
         (pad 4 thru_hole circle (at -7.62 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.RST})
         (pad 5 thru_hole circle (at -5.08 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.VCC})
