@@ -1,11 +1,16 @@
 meta:
   engine: 4.1.0
 units:
-  u: 16.5
+  ux: 16.5
+  uy: 16.5
+  p: 1
+  kx: ux + p
+  ky: uy + p
   mcu_width: 17.78
   mcu_height: 33.02
   battery_pad: 5
-  pinky_stagger: 5u/4
+  mcu_padding: 2
+  pinky_stagger: 5ky/4
   pinky_splay: 5
   ring_splay: 3
   thumb_distance: 14 
@@ -13,8 +18,10 @@ units:
 points:
   rotate: pinky_splay + ring_splay
   key:
-    width: u
-    height: u
+    width: ux
+    height: uy
+    spread: kx
+    padding: ky
     autobind: 0
   zones:
     matrix:
@@ -27,18 +34,18 @@ points:
         ring.key:
           stagger: pinky_stagger
           splay: -pinky_splay
-          origin: [-u/2, -u/2]
+          origin: [-kx/2, -ky/2]      
         middle.key:
-          stagger: u/4
+          stagger: ky/4
           splay: -ring_splay
-          origin: [-u/2, -u/2]
-        index.key.stagger: -u/4
-        inner.key.stagger: -u/2
         inner.rows.bottom.skip: true
-        pinky.rows.top.bind: [0, u, 0, 0]
-        ring.key.bind: [0, u, 0, 0]
-        ring.rows.bottom.bind: [0, u, 0, u/2]
-        index.rows.bottom.bind: [0, 0, 0, u]
+          origin: [-kx/2, -ky/2]
+        index.key.stagger: -ky/4
+        inner.key.stagger: -ky/2
+        pinky.rows.top.bind: [0, kx, 0, 0]
+        ring.key.bind: [0, kx, 0, 0]
+        ring.rows.bottom.bind: [0, kx, 0, kx/2]
+        index.rows.bottom.bind: [0, 0, 0, kx]
     thumb:
       anchor:
         ref: matrix_inner_bottom
@@ -48,16 +55,16 @@ points:
         reachy.key:
           stagger: 0
           splay: -5
-          origin: [-u/2, -u/2]
+          origin: [-kx/2, -ky/2]
         tucky.key.bind: [2u, u/2, 0, 0]
     mcu:
       anchor:
         ref: matrix_inner_home
-        shift: [u/2 + mcu_width/2 + 1.3, 3/2u - mcu_height/2]
+        shift: [ux/2 + mcu_width/2 + mcu_padding, 3uy/2 - mcu_height/2 + p]
       key:
         width: mcu_width
         height: mcu_height
-        bind: [0, 0, u, u]
+        bind: [0, 0, ky, kx]
     battery:
       anchor:
         ref: mcu
@@ -71,14 +78,14 @@ points:
 outlines:
   keys:
     - what: rectangle
-      size: u
+      size: [ux, uy]
       where:
         - /matrix/
         - /thumb/
       operation: stack
   board:
     - what: rectangle
-      size: u
+      size: [ux, uy]
       where:
         - /matrix/
         - /thumb/
@@ -88,9 +95,9 @@ outlines:
       where: mcu
       bound: true
     - what: rectangle
-      size: [u, 2u]
+      size: [ux, 2uy]
       where: thumb_reachy
-      adjust.shift: [u, u/2]
+      adjust.shift: [ux, uy/2]
       operation: subtract
       expand: 2
       joints: 2
