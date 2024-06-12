@@ -203,4 +203,10 @@ pcbs:
         what: ufl
         where: /battery/
         params:
-          SIG: "{{name}}"
+          SIG: "{{net}}"
+      reversed_battery:
+        what: ufl
+        where: /battery/
+        params:
+          SIG: "{{reversed_net}}"
+          reverse: true
