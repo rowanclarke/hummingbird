@@ -1,9 +1,9 @@
 meta:
   engine: 4.1.0
 units:
-  ux: 16.5
-  uy: 16.5
-  p: 1
+  ux: 17
+  uy: 17
+  p: 0.5
   kx: ux + p
   ky: uy + p
   pitch: 2.54
@@ -148,7 +148,7 @@ outlines:
       where: thumb_reachy
       adjust.shift: [ux, uy/2]
       operation: subtract
-      expand: 2
+      expand: 2.5
       joints: 2
 pcbs:
   hummingbird:
