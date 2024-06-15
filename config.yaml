@@ -247,6 +247,11 @@ pcbs:
           left: B-
           right: ""
           common: LIVE
+      switch_via:
+        what: via
+        where: /switch/
+        adjust.shift: [0, 1.5 - 2pitch]
+        params.net: LIVE 
       mounthole:
           what: mounthole
           where: /mounthole/
