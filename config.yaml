@@ -124,7 +124,17 @@ points:
       key:
         width: 7.85
         height: 2.7
+    mounthole_left.anchor:
+      - aggregate.parts: [thumb_tucky, matrix_inner_home]
+    mounthole_right.anchor:
+      - ref: mounthole_left
+        shift: [ux/2 + mcu_width/2 + mcu_padding, 0]
 outlines:
+  mounthole:
+    - what: rectangle
+      size: [2.2, 2.2]
+      where:
+        - /mounthole/
   keys:
     - what: rectangle
       size: [ux, uy]
@@ -158,6 +168,9 @@ pcbs:
         outline: board
       keys:
         outline: keys
+        layer: Dwgs.User
+      mounthole:
+        outline: mounthole
         layer: Dwgs.User
     footprints:
       switches:
@@ -234,3 +247,6 @@ pcbs:
           left: B-
           right: ""
           common: LIVE
+      mounthole:
+          what: mounthole
+          where: /mounthole/
