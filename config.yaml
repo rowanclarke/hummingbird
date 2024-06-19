@@ -134,19 +134,28 @@ points:
       - ref: mounthole_left
         shift: [ux/2 + mcu_width/2 + mcu_padding, 0]
 outlines:
-  mounthole:
-    - what: rectangle
-      size: [2.2, 2.2]
+  _mounthole:
+    - what: circle
+      radius: 1.1
       where:
         - /mounthole/
-  keys:
+  _key_caps:
     - what: rectangle
       size: [ux, uy]
+      corner: 2
       where:
         - /matrix/
         - /thumb/
       operation: stack
-  board:
+  _keys:
+    - what: rectangle
+      size: [14, 14]
+      corner: 0.5
+      where:
+        - /matrix/
+        - /thumb/
+      operation: stack
+  _inner_board:
     - what: rectangle
       size: [ux, uy]
       where:
@@ -162,8 +171,17 @@ outlines:
       where: thumb_reachy
       adjust.shift: [ux, uy/2]
       operation: subtract
-      expand: 2.5
-      joints: 2
+      fillet: 2
+  board:
+    - what: outline
+      name: _inner_board
+      expand: 2
+  cover:
+    - what: outline
+      name: board
+    - what: outline
+      name: _keys
+      operation: subtract
 pcbs:
   hummingbird:
     template: kicad8
@@ -171,10 +189,10 @@ pcbs:
       main:
         outline: board
       keys:
-        outline: keys
+        outline: _keys
         layer: Dwgs.User
       mounthole:
-        outline: mounthole
+        outline: _mounthole
         layer: Dwgs.User
     footprints:
       switches:
