@@ -12,7 +12,9 @@ units:
   mcu_padding: 2
   switch_length: 7.3
   pinky_stagger: 5ky/4
+  pinky_spread: 2
   pinky_splay: 5
+  ring_spread: 0
   ring_splay: 3
   thumb_distance: 14 
   reachy_splay: 5
@@ -34,10 +36,12 @@ points:
         pinky:
         ring.key:
           stagger: pinky_stagger
+          spread: kx + pinky_spread
           splay: -pinky_splay
           origin: [-kx/2, -ky/2]      
         middle.key:
           stagger: ky/4
+          spread: kx + ring_spread
           splay: -ring_splay
           origin: [-kx/2, -ky/2]
         index.key.stagger: -ky/4
