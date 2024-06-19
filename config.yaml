@@ -133,6 +133,16 @@ points:
     mounthole_right.anchor:
       - ref: mounthole_left
         shift: [ux/2 + mcu_width/2 + mcu_padding, 0]
+    via_live:
+      anchor:
+        ref: mcu
+        shift: [0, 6pitch - 1.5]
+      key.net: LIVE
+    via_gnd:
+      anchor:
+        ref: mcu
+        shift: [0, 6pitch]
+      key.net: GND
 outlines:
   _mounthole:
     - what: circle
@@ -274,9 +284,8 @@ pcbs:
           common: LIVE
       switch_via:
         what: via
-        where: /switch/
-        adjust.shift: [0, 1.5 - 2pitch]
-        params.net: LIVE 
+        where: /via/
+        params.net: "{{net}}"   
       mounthole:
           what: mounthole
           where: /mounthole/
