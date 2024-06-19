@@ -188,6 +188,9 @@ pcbs:
     outlines:
       main:
         outline: board
+      key_caps:
+        outline: _key_caps
+        layer: Dwgs.User
       keys:
         outline: _keys
         layer: Dwgs.User
