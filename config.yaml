@@ -75,10 +75,14 @@ points:
           top.reversed_net: "P21"
           home.net: "P10"
           home.reversed_net: "P15"
-        pinky.rows.top.bind: [0, kx, 0, 0]
-        ring.key.bind: [0, kx, 0, 0]
+        pinky.rows.top.bind: [0, kx, kx/2, 0]
+        ring.key.bind: [0, kx/2, kx/2, 0]
         ring.rows.bottom.bind: [0, kx, 0, kx/2]
-        index.rows.bottom.bind: [0, 0, 0, kx]
+        middle.rows.home.bind: [kx/2, kx/2, kx/2, 0]
+        index.rows.bottom.bind: [0, kx/2, 0, kx]
+        index.rows.home.bind: [kx/2, kx/2, kx/2, 0]
+        index.rows.top.bind: [0, 0, kx/2, kx/2]
+        inner.rows.top.bind: [0, 0, 0, kx/2]
     thumb:
       anchor:
         ref: matrix_inner_bottom
