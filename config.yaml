@@ -15,6 +15,12 @@ units:
   mcu_height: 33.02
   mcu_padding: 2
   switch_length: 7.3
+  cover_depth: 2.2
+  head_diameter: 3.2
+  thread_diameter: 1.4
+  insert_length: 1.5
+  insert_diameter: 2.3
+  e: 0.2
   pinky_stagger: ky/4
   pinky_spread: 2
   pinky_splay: 5
@@ -154,13 +160,18 @@ points:
 outlines:
   _mounthole:
     - what: circle
-      radius: 1.1
+      radius: thread_diameter/2 + e/2
+      where:
+        - /mounthole/
+  _insert:
+    - what: circle
+      radius: insert_diameter/2
       where:
         - /mounthole/
   _key_caps:
     - what: rectangle
       size: [ux, uy]
-      corner: 2
+      corner: ur
       where:
         - /matrix/
         - /thumb/
@@ -212,8 +223,8 @@ pcbs:
       keys:
         outline: _keys
         layer: Dwgs.User
-      mounthole:
-        outline: _mounthole
+      insert:
+        outline: _insert
         layer: Dwgs.User
     footprints:
       switches:
@@ -295,5 +306,8 @@ pcbs:
         where: /via/
         params.net: "{{net}}"   
       mounthole:
-          what: mounthole
-          where: /mounthole/
+        what: mounthole
+        where: /mounthole/
+        params:
+          thread: thread_diameter + e
+          head: head_diameter  
