@@ -16,7 +16,7 @@ module.exports = {
       (fp_circle (center 0 0) (end 0 1.925) (layer Dwgs.User) (width 0.15))
       
       ${'' /* stabilizers */}
-      (pad "" np_thru_hole circle (at 0 0) (size 2.2 2.2) (drill 2.2) (layers *.Cu *.Mask)))
+      (pad "" np_thru_hole circle (at 0 0) (size 2.2 2.2) (drill 2.2) (layers *.Cu *.Mask) (clearance 1.075)))
     `
   }
 } 
