@@ -3,6 +3,10 @@ meta:
 units:
   ux: 17
   uy: 17
+  ur: 2
+  cx: 14
+  cy: 14
+  cr: 0.5
   p: 0.5
   kx: ux + p
   ky: uy + p
@@ -11,7 +15,7 @@ units:
   mcu_height: 33.02
   mcu_padding: 2
   switch_length: 7.3
-  pinky_stagger: 5ky/4
+  pinky_stagger: ky/4
   pinky_spread: 2
   pinky_splay: 5
   ring_spread: 0
@@ -35,7 +39,7 @@ points:
       columns:
         pinky:
         ring.key:
-          stagger: pinky_stagger
+          stagger: ky + pinky_stagger
           spread: kx + pinky_spread
           splay: -pinky_splay
           origin: [-kx/2, -ky/2]      
@@ -163,8 +167,8 @@ outlines:
       operation: stack
   _keys:
     - what: rectangle
-      size: [14, 14]
-      corner: 0.5
+      size: [cx, cy]
+      corner: cr
       where:
         - /matrix/
         - /thumb/
