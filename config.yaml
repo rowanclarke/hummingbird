@@ -24,6 +24,9 @@ units:
   pinky_stagger: ky/4
   pinky_spread: 2
   pinky_splay: 5
+  sec_half_pinky_splay: 1.0009526851633
+  cot_pinky_splay: 11.430052
+  _mounthole_dist: cot_pinky_splay * pinky_spread - pinky_stagger
   ring_spread: 0
   ring_splay: 3
   thumb_distance: 14 
@@ -147,6 +150,11 @@ points:
     mounthole_right.anchor:
       - ref: mounthole_left
         shift: [ux/2 + mcu_width/2 + mcu_padding, 0]
+    mounthole_pinky.anchor:
+      - ref: matrix_pinky_home
+        shift: [kx/2, -ky/2 - _mounthole_dist]
+        rotate: -pinky_splay/2
+      - shift: [0, sec_half_pinky_splay * (2ky + _mounthole_dist - head_diameter/2)]
     via_live:
       anchor:
         ref: mcu
