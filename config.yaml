@@ -7,6 +7,7 @@ units:
   cx: 14
   cy: 14
   cr: 0.5
+  e: 0.2
   p: 0.5
   kx: ux + p
   ky: uy + p
@@ -20,7 +21,6 @@ units:
   thread_diameter: 1.4
   insert_length: 1.5
   insert_diameter: 2.3
-  e: 0.2
   pinky_stagger: ky/4
   pinky_spread: 2
   pinky_splay: 5
@@ -114,7 +114,8 @@ points:
         tucky.key.reversed_net: "P7"
         reachy.key.net: "P8"
         reachy.key.reversed_net: "P8"
-        tucky.key.bind: [2u, u/2, 0, 0]
+        tucky.key.bind: [2ky, kx/2, 0, 0]
+        reachy.key.bind: [0, 0, 0, kx/2]
     mcu:
       anchor:
         ref: matrix_inner_home
@@ -122,7 +123,7 @@ points:
       key:
         width: mcu_width
         height: mcu_height
-        bind: [0, 0, ky, kx]
+        bind: [0, 0, 3ky/2, kx]
     battery:
       anchor:
         ref: mcu
@@ -171,7 +172,7 @@ outlines:
       radius: thread_diameter/2 + e/2
       where:
         - /mounthole/
-  _insert:
+  insert:
     - what: circle
       radius: insert_diameter/2
       where:
@@ -184,7 +185,7 @@ outlines:
         - /matrix/
         - /thumb/
       operation: stack
-  _keys:
+  keys:
     - what: rectangle
       size: [cx, cy]
       corner: cr
@@ -192,33 +193,30 @@ outlines:
         - /matrix/
         - /thumb/
       operation: stack
-  _inner_board:
+  mcu:
     - what: rectangle
-      size: [ux, uy]
+      size: [mcu_width, mcu_height]
+      where:
+        - mcu
+  board:
+    - what: rectangle
+      size: [kx, ky]
+      corner: 2 + p/2
       where:
         - /matrix/
         - /thumb/
       bound: true
     - what: rectangle
-      size: [mcu_width, mcu_height]
+      size: [mcu_width + p, mcu_height + p]
+      corner: p/2
       where: mcu
       bound: true
     - what: rectangle
-      size: [ux, 2uy]
+      size: [kx, 5ky/2]
       where: thumb_reachy
-      adjust.shift: [ux, uy/2]
+      adjust.shift: [kx, ky]
       operation: subtract
-      fillet: 2
-  board:
-    - what: outline
-      name: _inner_board
-      expand: 2
-  cover:
-    - what: outline
-      name: board
-    - what: outline
-      name: _keys
-      operation: subtract
+      expand: 2 - p/2
 pcbs:
   hummingbird:
     template: kicad8
@@ -229,10 +227,13 @@ pcbs:
         outline: _key_caps
         layer: Dwgs.User
       keys:
-        outline: _keys
+        outline: keys
         layer: Dwgs.User
       insert:
-        outline: _insert
+        outline: insert
+        layer: Dwgs.User
+      mcu:
+        outline: mcu
         layer: Dwgs.User
     footprints:
       switches:

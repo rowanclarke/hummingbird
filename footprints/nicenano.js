@@ -39,8 +39,8 @@ module.exports = {
       ${p.at /* parametric position */}
 
       ${'' /* footprint reference */}
-      (fp_text reference "${p.ref}" (at 0 0) (layer F.SilkS) ${p.ref_hide} (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "${p.ref}" (at 0 0) (layer Dwgs.User) ${p.ref_hide} (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer Dwgs.User) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
     
       ${''/* illustration of the (possible) USB port overhang */}
       (fp_line (start -18.034 -3.81) (end -12.954 -3.81) (layer Dwgs.User) (width 0.15))
@@ -49,41 +49,41 @@ module.exports = {
       (fp_line (start -12.954 -3.81) (end -12.954 3.81) (layer Dwgs.User) (width 0.15))
     
       ${''/* component outline */}
-      (fp_line (start -16.51 8.89) (end 16.51 8.89) (layer F.SilkS) (width 0.15))
-      (fp_line (start 16.51 8.89) (end 16.51 -8.89) (layer F.SilkS) (width 0.15))
-      (fp_line (start 16.51 -8.89) (end -16.51 -8.89) (layer F.SilkS) (width 0.15))
-      (fp_line (start -16.51 -8.89) (end -16.51 8.89) (layer F.SilkS) (width 0.15))
+      (fp_line (start -16.51 8.89) (end 16.51 8.89) (layer Dwgs.User) (width 0.15))
+      (fp_line (start 16.51 8.89) (end 16.51 -8.89) (layer Dwgs.User) (width 0.15))
+      (fp_line (start 16.51 -8.89) (end -16.51 -8.89) (layer Dwgs.User) (width 0.15))
+      (fp_line (start -16.51 -8.89) (end -16.51 8.89) (layer Dwgs.User) (width 0.15))
       `
     function pins(def_neg, def_pos) {
       return `
         ${''/* pin names */}
-        (fp_text user B+ (at -15.24 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user RAW (at -12.7 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user GND (at -10.16 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user RST (at -7.62 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user VCC (at -5.08 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P21 (at -2.54 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P20 (at 0 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P19 (at 2.54 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P18 (at 5.08 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P15 (at 7.62 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P14 (at 10.16 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P16 (at 12.7 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P10 (at 15.24 ${def_pos}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user B+ (at -15.24 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user RAW (at -12.7 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user GND (at -10.16 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user RST (at -7.62 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user VCC (at -5.08 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P21 (at -2.54 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P20 (at 0 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P19 (at 2.54 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P18 (at 5.08 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P15 (at 7.62 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P14 (at 10.16 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P16 (at 12.7 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P10 (at 15.24 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
       
-        (fp_text user B- (at -15.24 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P01 (at -12.7 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P00 (at -10.16 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user GND (at -7.62 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user GND (at -5.08 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P02 (at -2.54 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P03 (at 0 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P04 (at 2.54 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P05 (at 5.08 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P06 (at 7.62 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P07 (at 10.16 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P08 (at 12.7 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
-        (fp_text user P09 (at 15.24 ${def_neg}4.8 ${p.r + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user B- (at -15.24 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P01 (at -12.7 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P00 (at -10.16 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user GND (at -7.62 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user GND (at -5.08 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P02 (at -2.54 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P03 (at 0 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P04 (at 2.54 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P05 (at 5.08 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P06 (at 7.62 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P07 (at 10.16 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P08 (at 12.7 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user P09 (at 15.24 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
       
         ${''/* and now the actual pins */}
         (pad 1 thru_hole circle (at -15.24 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.BP})
