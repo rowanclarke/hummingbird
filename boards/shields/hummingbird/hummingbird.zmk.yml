@@ -1,0 +1,11 @@
+file_format: "1"
+id: hummingbird
+name: Hummingbird
+type: shield
+url: https://github.com/rowanclarke/kbd/
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - hummingbird_left
+  - hummingbird_right
