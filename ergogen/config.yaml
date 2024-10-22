@@ -208,7 +208,7 @@ outlines:
       bound: true
     - what: rectangle
       size: [mcu_width + p, mcu_height + p]
-      corner: p/2
+      corner: 2 + p/2
       where: mcu
       bound: true
     - what: rectangle
