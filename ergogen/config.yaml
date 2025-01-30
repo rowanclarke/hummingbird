@@ -29,7 +29,7 @@ units:
   _mounthole_dist: cot_pinky_splay * pinky_spread - pinky_stagger
   ring_spread: 0
   ring_splay: 3
-  thumb_distance: 14 
+  thumb_distance: 14
   reachy_splay: 5
 points:
   rotate: pinky_splay + ring_splay
@@ -124,20 +124,6 @@ points:
         width: mcu_width
         height: mcu_height
         bind: [0, 0, 3ky/2, kx]
-    battery:
-      anchor:
-        ref: mcu
-        shift: [-switch_length/2, 6pitch]
-      key:
-        width: 5
-        height: 5
-      columns:
-        pos:
-        neg.key.spread: switch_length
-        pos.key.net: "LIVE"
-        pos.key.reversed_net: "B+"
-        neg.key.net: "B-"
-        neg.key.reversed_net: "LIVE"
     switch:
       anchor:
         ref: mcu
@@ -146,11 +132,19 @@ points:
       key:
         width: 7.85
         height: 2.7
+    battery:
+      anchor:
+        - aggregate.parts: [matrix_inner_home, thumb_tucky]
+        - shift: [mcu_width/2 + mcu_padding/2, 0]
+      key:
+        width: 24
+        height: 24
     mounthole_left.anchor:
-      - aggregate.parts: [thumb_tucky, matrix_inner_home]
+      - aggregate.parts: [matrix_inner_home, thumb_tucky]
+      - shift: [-ux/2 + head_diameter/2, 0]
     mounthole_right.anchor:
-      - ref: mounthole_left
-        shift: [ux/2 + mcu_width/2 + mcu_padding, 0]
+      - aggregate.parts: [matrix_inner_home, thumb_tucky]
+        shift: [ux/2 + mcu_width + mcu_padding - head_diameter/2, 0]
     mounthole_pinky.anchor:
       - ref: matrix_pinky_home
         shift: [kx/2, -ky/2 - _mounthole_dist]
@@ -193,6 +187,11 @@ outlines:
         - /matrix/
         - /thumb/
       operation: stack
+  battery:
+    - what: rectangle
+      size: [30, 10]
+      where:
+       - /battery/
   mcu:
     - what: rectangle
       size: [mcu_width, mcu_height]
@@ -229,6 +228,9 @@ pcbs:
       keys:
         outline: keys
         layer: Dwgs.User
+      battery:
+        outline: battery
+        layer: Dwgs.User
       insert:
         outline: insert
         layer: Dwgs.User
@@ -239,6 +241,7 @@ pcbs:
       switches:
         what: choc
         where: /thumb/
+        adjust.rotate: 180
         params:
           from: GND
           to: "{{net}}"
@@ -256,6 +259,7 @@ pcbs:
       reversed_switches:
         what: choc
         where: /thumb/
+        adjust.rotate: 180
         params:
           from: GND
           to: "{{reversed_net}}"
