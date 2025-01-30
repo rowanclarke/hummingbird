@@ -165,6 +165,24 @@ outlines:
       radius: insert_diameter/2
       where:
         - /mounthole/
+  key_shaft:
+    - what: circle
+      radius: 3.429/2
+      where:
+        - /matrix/
+        - /thumb/
+    - what: circle
+      radius: 1.7018/2
+      adjust.shift: [-5.5, 0]
+      where:
+        - /matrix/
+        - /thumb/
+    - what: circle
+      radius: 1.7018/2
+      adjust.shift: [5.5, 0]
+      where:
+        - /matrix/
+        - /thumb/
   _key_caps:
     - what: rectangle
       size: [ux, uy]
@@ -181,6 +199,108 @@ outlines:
         - /matrix/
         - /thumb/
       operation: stack
+  _hotswap_housing:
+    - what: polygon
+      points:
+        - shift: [-3.5757359303559646, 2.7]
+        - shift: [-0.212132035, 0.087867966]
+        - shift: [-0.674264068, 0.674264068]
+        - shift: [-0.08786796564403598, 0.21213203435596428]
+        - shift: [0.0, 2.751471862]
+        - shift: [0.08786796564403598, 0.21213203435596384]
+        - shift: [0.674264068, 0.674264068]
+        - shift: [0.21213203435596428, 0.08786796564403598]
+        - shift: [0.17573593058494108, 0]
+        - shift: [1.1, 1.2]
+        - shift: [0.0, 2.9]
+        - shift: [0.8, 0.8]
+        - shift: [3.0, 0.0]
+        - shift: [0.8, -0.8]
+        - shift: [0.0, -3.3]
+        - shift: [-0.7, -0.9552681893175716]
+        - shift: [-1.45, -1.6947318104457443]
+        - shift: [0, -1.87573593058517]
+        - shift: [-0.08786796564403573, -0.21213203435596428]
+        - shift: [-0.674264068, -0.674264068]
+        - shift: [-0.21213203435596428, -0.08786796564403554]
+    - what: circle
+      adjust.shift: [-3.575735931, 3.0]
+      radius: 0.3
+    - what: circle
+      adjust.shift: [-0.824264069, 3.0]
+      radius: 0.3
+    - what: circle
+      adjust.shift: [-0.15, 3.674264069]
+      radius: 0.3
+    - what: circle
+      adjust.shift: [2.235489027, 5.233341558]
+      radius: 2.109392579
+      operation: subtract
+    - what: circle
+      adjust.shift: [1.298187633, 8.2]
+      radius: 1.001812367
+    - what: circle
+      adjust.shift: [1.5, 11.5]
+      radius: 0.8
+    - what: circle
+      adjust.shift: [-1.5, 11.5]
+      radius: 0.8
+    - what: circle
+      adjust.shift: [-3.504545455, 8.6]
+      radius: 1.204545455
+      operation: subtract
+    - what: circle
+      adjust.shift: [-3.575735931, 7.1]
+      radius: 0.3
+    - what: circle
+      adjust.shift: [-4.25, 6.425735931]
+      radius: 0.3
+    - what: circle
+      adjust.shift: [-4.25, 3.674264069]
+      radius: 0.3
+    - what: polygon
+      points:
+        - shift: [0.15, 3.674264069]
+        - shift: [0, 3.725735931]
+        - shift: [-3.725735931, 0]
+  hotswap:
+    - what: outline
+      name: _hotswap_housing
+      where:
+        - /matrix/
+        - /thumb/
+      origin:
+        - shift: [-3.5757359303559646, 2.7]
+        - rotate: 90
+        - shift: [5 + 2.35, 3.75 + 0.974264069 - 2.35]
+      expand: e
+    - what: rectangle
+      where:
+        - /matrix/
+        - /thumb/
+      size: 2.6
+      adjust.shift: [-8.275, -3.75]
+    - what: rectangle
+      where:
+        - /matrix/
+        - /thumb/
+      size: 2.6
+      adjust.shift: [3.275, -5.95]
+  _key_sink:
+    - what: circle
+      radius: 1.7145
+    - what: circle
+      radius: 0.8509
+      adjust.shift: [-5.5, 0]
+    - what: circle
+      radius: 0.8509
+      adjust.shift: [5.5, 0]
+  key_sink:
+    - what: outline
+      name: _key_sink
+      where:
+        - /matrix/
+        - /thumb/
   battery:
     - what: rectangle
       size: [30, 10]
@@ -224,6 +344,15 @@ pcbs:
         layer: Dwgs.User
       battery:
         outline: battery
+        layer: Dwgs.User
+      hotswap:
+        outline: hotswap
+        layer: Dwgs.User
+      key_sink:
+        outline: key_sink
+        layer: Dwgs.User
+      cover:
+        outline: cover
         layer: Dwgs.User
       insert:
         outline: insert
