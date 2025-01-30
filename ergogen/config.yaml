@@ -155,9 +155,9 @@ points:
         shift: [0, 6pitch]
       key.net: GND
 outlines:
-  _mounthole:
+  mounthole:
     - what: circle
-      radius: thread_diameter/2 + e/2
+      radius: head_diameter/2 + e/2
       where:
         - /mounthole/
   insert:
