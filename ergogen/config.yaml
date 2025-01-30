@@ -124,6 +124,16 @@ points:
       key:
         width: 24
         height: 24
+    switch.anchor:
+      ref: matrix_inner_top
+      shift: [0, ux/2 + m - (switch_cover_depth + switch_pin_depth + switch_height / 2)]
+    battery.anchor:
+      - aggregate.parts: [matrix_inner_home, thumb_tucky]
+      - shift: [mcu_width/2 + mcu_padding/2, 0]
+    battery_terminal.anchor:
+      - ref: battery
+        shift: [battery_width/2, battery_height/2]
+      - shift: [-2.54/2, 3.73/2]
     mounthole_left.anchor:
       - aggregate.parts: [matrix_inner_home, thumb_tucky]
       - shift: [-ux/2 + head_diameter/2, 0]
