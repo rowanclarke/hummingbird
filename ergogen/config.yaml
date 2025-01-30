@@ -26,7 +26,7 @@ units:
   pinky_splay: 5
   sec_half_pinky_splay: 1.0009526851633
   cot_pinky_splay: 11.430052
-  _mounthole_dist: cot_pinky_splay * pinky_spread - pinky_stagger
+  mounthole_dist: cot_pinky_splay * pinky_spread - pinky_stagger
   ring_spread: 0
   ring_splay: 3
   thumb_distance: 14
@@ -60,38 +60,25 @@ points:
         index.key.stagger: -ky/4
         inner.key.stagger: -ky/2
         pinky.rows:
-          top.net: "P2"
-          top.reversed_net: "P5"
-          home.net: "P3"
-          home.reversed_net: "P6"
+          top.net: "P15"
+          home.net: "P5"
           bottom.skip: true
         ring.rows:
-          top.net: "P21"
-          top.reversed_net: "P18"
-          home.net: "P15"
-          home.reversed_net: "P10"
-          bottom.net: "P4"
-          bottom.reversed_net: "P4"
-        middle.rows:
-          top.net: "P20"
-          top.reversed_net: "P19"
+          top.net: "P18"
           home.net: "P14"
-          home.reversed_net: "P16"
-          bottom.net: "P5"
-          bottom.reversed_net: "P3"
-        index.rows:
-          top.net: "P19"
-          top.reversed_net: "P20"
-          home.net: "P16"
-          home.reversed_net: "P14"
           bottom.net: "P6"
-          bottom.reversed_net: "P2"
+        middle.rows:
+          top.net: "P19"
+          home.net: "P16"
+          bottom.net: "P7"
+        index.rows:
+          top.net: "P20"
+          home.net: "P10"
+          bottom.net: "P8"
         inner.rows:
           bottom.skip: true
-          top.net: "P18"
-          top.reversed_net: "P21"
-          home.net: "P10"
-          home.reversed_net: "P15"
+          top.net: "P21"
+          home.net: "P9"
         pinky.rows.top.bind: [0, kx, kx/2, 0]
         ring.key.bind: [0, kx/2, kx/2, 0]
         ring.rows.bottom.bind: [0, kx, 0, kx/2]
@@ -110,10 +97,8 @@ points:
           stagger: 0
           splay: -5
           origin: [-kx/2, -ky/2]
-        tucky.key.net: "P7"
-        tucky.key.reversed_net: "P7"
-        reachy.key.net: "P8"
-        reachy.key.reversed_net: "P8"
+        tucky.key.net: "P4"
+        reachy.key.net: "P3"
         tucky.key.bind: [2ky, kx/2, 0, 0]
         reachy.key.bind: [0, 0, 0, kx/2]
     mcu:
@@ -147,9 +132,8 @@ points:
         shift: [ux/2 + mcu_width + mcu_padding - head_diameter/2, 0]
     mounthole_pinky.anchor:
       - ref: matrix_pinky_home
-        shift: [kx/2, -ky/2 - _mounthole_dist]
+        shift: [kx/2, -ky/2 - mounthole_dist]
         rotate: -pinky_splay/2
-      - shift: [0, sec_half_pinky_splay * (2ky + _mounthole_dist - head_diameter/2)]
     via_live:
       anchor:
         ref: mcu
