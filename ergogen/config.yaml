@@ -9,13 +9,17 @@ units:
   cr: 0.5
   e: 0.2
   p: 0.5
+  m: 2
   kx: ux + p
   ky: uy + p
   pitch: 2.54
   mcu_width: 17.78
   mcu_height: 33.02
   mcu_padding: 2
-  switch_length: 7.3
+  switch_width: 6.7
+  switch_height: 2.7
+  battery_width: 30
+  battery_height: 10
   cover_depth: 2.2
   head_diameter: 3.2
   thread_diameter: 1.4
@@ -31,6 +35,8 @@ units:
   ring_splay: 3
   thumb_distance: 14
   reachy_splay: 5
+  switch_cover_depth: 2
+  switch_pin_depth: 1.5
 points:
   rotate: pinky_splay + ring_splay
   key:
@@ -109,21 +115,6 @@ points:
         width: mcu_width
         height: mcu_height
         bind: [0, 0, 3ky/2, kx]
-    switch:
-      anchor:
-        ref: mcu
-        shift: [0, 4pitch]
-        rotate: 180
-      key:
-        width: 7.85
-        height: 2.7
-    battery:
-      anchor:
-        - aggregate.parts: [matrix_inner_home, thumb_tucky]
-        - shift: [mcu_width/2 + mcu_padding/2, 0]
-      key:
-        width: 24
-        height: 24
     switch.anchor:
       ref: matrix_inner_top
       shift: [0, ux/2 + m - (switch_cover_depth + switch_pin_depth + switch_height / 2)]
@@ -144,16 +135,7 @@ points:
       - ref: matrix_pinky_home
         shift: [kx/2, -ky/2 - mounthole_dist]
         rotate: -pinky_splay/2
-    via_live:
-      anchor:
-        ref: mcu
-        shift: [0, 6pitch - 1.5]
-      key.net: LIVE
-    via_gnd:
-      anchor:
-        ref: mcu
-        shift: [0, 6pitch]
-      key.net: GND
+      - shift: [0, sec_half_pinky_splay * (2ky + mounthole_dist - head_diameter/2)]
 outlines:
   mounthole:
     - what: circle
@@ -165,6 +147,40 @@ outlines:
       radius: insert_diameter/2
       where:
         - /mounthole/
+  switch:
+    - what: rectangle
+      size: [switch_width, switch_height]
+      where: /switch/
+  switch_plate:
+    - what: rectangle
+      size: [12.7, 1.5]
+      adjust.shift: [0, switch_height/2 + switch_pin_depth/2]
+      where: /switch/
+    - what: rectangle
+      size: [5.2, 2]
+      adjust.shift: [0, switch_height/2 + switch_pin_depth + 1]
+      where: /switch/
+    - what: rectangle
+      size: [1.3, 1.6]
+      adjust.shift: [0, switch_height/2 + switch_pin_depth/2 - 0.05]
+      where: /switch/
+      operation: subtract
+  _switch_zone:
+    - what: rectangle
+      size: [switch_width + 1.6, switch_height + 1.25]
+      adjust.shift: [0, -1.25/2]
+      where: /switch/
+    - what: outline
+      name: switch_plate
+      adjust.shift: [-0.75, 0]
+    - what: outline
+      name: switch_plate
+      adjust.shift: [0.75, 0]
+  switch_zone:
+    - what: outline
+      name: _switch_zone
+      expand: e/2
+      joints: pointy
   key_shaft:
     - what: circle
       radius: 3.429/2
@@ -304,24 +320,26 @@ outlines:
   battery:
     - what: rectangle
       size: [30, 10]
-      where:
-       - /battery/
+      where: battery
   mcu:
     - what: rectangle
-      size: [mcu_width, mcu_height]
-      where:
-        - mcu
-  board:
+      size: [mcu_width - 2 * 2.54, mcu_height]
+      where: mcu
+    - what: rectangle
+      size: [9, 5]
+      where: mcu
+      adjust.shift: [0, mcu_height/2]
+  cover:
     - what: rectangle
       size: [kx, ky]
-      corner: 2 + p/2
+      corner: m + p/2
       where:
         - /matrix/
         - /thumb/
       bound: true
     - what: rectangle
       size: [mcu_width + p, mcu_height + p]
-      corner: 2 + p/2
+      corner: m + p/2
       where: mcu
       bound: true
     - what: rectangle
@@ -329,7 +347,16 @@ outlines:
       where: thumb_reachy
       adjust.shift: [kx, ky]
       operation: subtract
-      expand: 2 - p/2
+      expand: m - p/2
+  board:
+    - what: outline
+      name: cover
+    - what: outline
+      name: battery
+      operation: subtract
+    - what: outline
+      name: mcu
+      operation: subtract
 pcbs:
   hummingbird:
     template: kicad8
@@ -357,45 +384,27 @@ pcbs:
       insert:
         outline: insert
         layer: Dwgs.User
-      mcu:
-        outline: mcu
-        layer: Dwgs.User
     footprints:
-      switches:
-        what: choc
-        where: /thumb/
-        adjust.rotate: 180
-        params:
-          from: GND
-          to: "{{net}}"
-          keycaps: false
-          hotswap: true
       rotated_switches:
         what: choc
-        where: /matrix/
+        where:
+          - /matrix/
+          - /thumb/
         adjust.rotate: 180
         params:
           from: GND
           to: "{{net}}"
           keycaps: false
           hotswap: true
-      reversed_switches:
-        what: choc
-        where: /thumb/
-        adjust.rotate: 180
-        params:
-          from: GND
-          to: "{{reversed_net}}"
-          keycaps: false
-          hotswap: true
-          reverse: true
       rotated_reversed_switches:
         what: choc
-        where: /matrix/
+        where:
+          - /matrix/
+          - /thumb/
         adjust.rotate: 180
         params:
           from: GND
-          to: "{{reversed_net}}"
+          to: "{{net}}"
           keycaps: false
           hotswap: true
           reverse: true
@@ -405,28 +414,22 @@ pcbs:
         adjust.rotate: 270
         params:
           orientation: down
-          RAW: ""
-          GND: ""
+          GND: "NEG"
           RST: ""
           VCC: ""
           P1: ""
           P0: ""
       battery:
-        what: ufl
-        where: /battery/
+        what: lipo
+        where: battery
         params:
-          SIG: "{{net}}"
-      reversed_battery:
-        what: ufl
-        where: /battery/
-        params:
-          SIG: "{{reversed_net}}"
-          reverse: true
+          LIVE: LIVE
+          GND: GND
       switch:
         what: switch
         where: /switch/
         params:
-          left: B+
+          left: RAW
           right: ""
           common: LIVE
           reverse: true
@@ -434,13 +437,9 @@ pcbs:
         what: switch
         where: /switch/
         params:
-          left: B-
+          left: NEG
           right: ""
           common: LIVE
-      switch_via:
-        what: via
-        where: /via/
-        params.net: "{{net}}"   
       mounthole:
         what: mounthole
         where: /mounthole/
