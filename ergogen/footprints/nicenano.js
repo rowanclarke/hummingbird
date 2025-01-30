@@ -8,7 +8,6 @@ module.exports = {
   params: {
     designator: 'MCU',
     orientation: 'down',
-    BP: {type: 'net', value: 'B+'},
     RAW: {type: 'net', value: 'RAW'},
     GND: {type: 'net', value: 'GND'},
     RST: {type: 'net', value: 'RST'},
@@ -21,7 +20,6 @@ module.exports = {
     P14: {type: 'net', value: 'P14'},
     P16: {type: 'net', value: 'P16'},
     P10: {type: 'net', value: 'P10'},
-    BN: {type: 'net', value: 'B-'},
     P1: {type: 'net', value: 'P1'},
     P0: {type: 'net', value: 'P0'},
     P2: {type: 'net', value: 'P2'},
@@ -57,7 +55,7 @@ module.exports = {
     function pins(def_neg, def_pos) {
       return `
         ${''/* pin names */}
-        (fp_text user B+ (at -15.24 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user RAW (at -15.24 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
         (fp_text user RAW (at -12.7 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
         (fp_text user GND (at -10.16 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
         (fp_text user RST (at -7.62 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
@@ -71,7 +69,7 @@ module.exports = {
         (fp_text user P16 (at 12.7 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
         (fp_text user P10 (at 15.24 ${def_pos}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
       
-        (fp_text user B- (at -15.24 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
+        (fp_text user GND (at -15.24 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
         (fp_text user P01 (at -12.7 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
         (fp_text user P00 (at -10.16 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
         (fp_text user GND (at -7.62 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
@@ -86,9 +84,9 @@ module.exports = {
         (fp_text user P09 (at 15.24 ${def_neg}4.8 ${p.r + 90}) (layer Dwgs.User) (effects (font (size 0.8 0.8) (thickness 0.15))))
       
         ${''/* and now the actual pins */}
-        (pad 1 thru_hole circle (at -15.24 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.BP})
-        (pad 2 thru_hole circle (at -12.7 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.RAW})
-        (pad 3 thru_hole circle (at -10.16 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND})
+        (pad 1 thru_hole circle (at -15.24 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.RAW})
+        (pad 2 thru_hole circle (at -12.7 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask))
+        (pad 3 thru_hole circle (at -10.16 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask))
         (pad 4 thru_hole circle (at -7.62 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.RST})
         (pad 5 thru_hole circle (at -5.08 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.VCC})
         (pad 6 thru_hole circle (at -2.54 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P21})
@@ -100,11 +98,11 @@ module.exports = {
         (pad 12 thru_hole circle (at 12.7 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P16})
         (pad 13 thru_hole circle (at 15.24 ${def_pos}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P10})
 
-        (pad 14 thru_hole circle (at -15.24 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.BN})
+        (pad 14 thru_hole circle (at -15.24 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND})
         (pad 15 thru_hole circle (at -12.7 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P1})
         (pad 16 thru_hole circle (at -10.16 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P0})
-        (pad 17 thru_hole circle (at -7.62 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND})
-        (pad 18 thru_hole circle (at -5.08 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.GND})
+        (pad 17 thru_hole circle (at -7.62 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask))
+        (pad 18 thru_hole circle (at -5.08 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask))
         (pad 19 thru_hole circle (at -2.54 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P2})
         (pad 20 thru_hole circle (at 0 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P3})
         (pad 21 thru_hole circle (at 2.54 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P4})
