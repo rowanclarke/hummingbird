@@ -124,7 +124,7 @@ points:
     battery_terminal.anchor:
       - ref: battery
         shift: [battery_width/2, battery_height/2]
-      - shift: [-2.54/2, 3.73/2]
+      - shift: [-pitch/2, 3.73/2]
     mounthole_left.anchor:
       - aggregate.parts: [matrix_inner_home, thumb_tucky]
       - shift: [-ux/2 + head_diameter/2, 0]
@@ -321,14 +321,36 @@ outlines:
     - what: rectangle
       size: [30, 10]
       where: battery
+  battery_zone:
+    - what: rectangle
+      size: [2*pitch, 8.73]
+      where: battery
+      adjust.shift: [battery_width/2 - pitch, 8.73/2]
+  battery_pin_zone:
+    - what: rectangle
+      size: [2*pitch, 3.73]
+      where: battery
+      adjust.shift: [battery_width/2 - pitch, battery_height/2 + 3.73/2]
   mcu:
     - what: rectangle
-      size: [mcu_width - 2 * 2.54, mcu_height]
+      size: [mcu_width - 2 * pitch, mcu_height]
+      where: mcu
+  mcu_zone:
+    - what: outline
+      name: mcu
+      expand: e
+      joints: pointy
+  mcu_pins_zone:
+    - what: rectangle
+      size: [pitch, mcu_height]
+      adjust.shift: [-mcu_width/2 + pitch/2, 0]
       where: mcu
     - what: rectangle
-      size: [9, 5]
+      size: [pitch, mcu_height]
+      adjust.shift: [mcu_width/2 - pitch/2, 0]
       where: mcu
-      adjust.shift: [0, mcu_height/2]
+      expand: e
+      joints: pointy
   cover:
     - what: rectangle
       size: [kx, ky]
@@ -357,6 +379,11 @@ outlines:
     - what: outline
       name: mcu
       operation: subtract
+    - what: rectangle
+      size: [9, 5]
+      where: mcu
+      adjust.shift: [0, mcu_height/2]
+      operation: subtract
 pcbs:
   hummingbird:
     template: kicad8
@@ -370,11 +397,11 @@ pcbs:
         outline: keys
         layer: Dwgs.User
       battery:
-        outline: battery
+        outline: battery_zone
         layer: Dwgs.User
-      hotswap:
-        outline: hotswap
-        layer: Dwgs.User
+      # hotswap:
+      #   outline: hotswap
+      #   layer: Dwgs.User
       key_sink:
         outline: key_sink
         layer: Dwgs.User
@@ -446,3 +473,22 @@ pcbs:
         params:
           thread: thread_diameter + e
           head: head_diameter  
+      ground_mask:
+        what: mask
+        where: mcu
+        adjust:
+          shift: [-mcu_width/2 - pitch/8, mcu_height/2 - pitch/2]
+        params:
+          width: pitch/4
+          height: pitch/2
+          net: GND
+      reversed_ground_mask:
+        what: mask
+        where: mcu
+        adjust:
+          shift: [mcu_width/2 + pitch/8, mcu_height/2 - pitch/2]
+        params:
+          width: pitch/4
+          height: pitch/2
+          net: GND
+          reverse: true
