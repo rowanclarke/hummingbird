@@ -4,9 +4,9 @@ units:
   ux: 17
   uy: 17
   ur: 2
-  cx: 14
-  cy: 14
-  cr: 0.5
+  cx: 13.6
+  cy: 13.6
+  cr: 0.75
   e: 0.2
   p: 0.5
   m: 2
@@ -165,6 +165,16 @@ outlines:
       adjust.shift: [0, switch_height/2 + switch_pin_depth/2 - 0.05]
       where: /switch/
       operation: subtract
+  switch_join:
+    - what: rectangle
+      size: 0.5
+      adjust.shift: [-12.7/2 - 0.25, switch_height/2 + switch_pin_depth/2]
+      where: /switch/
+  switch_backbone:
+    - what: rectangle
+      size: 2
+      adjust.shift: [-12.7/2 - 0.5 - 1, switch_height/2 + switch_pin_depth/2]
+      where: /switch/
   _switch_zone:
     - what: rectangle
       size: [switch_width + 1.6, switch_height + 1.25]
@@ -211,6 +221,7 @@ outlines:
     - what: rectangle
       size: [cx, cy]
       corner: cr
+      expand: e/2
       where:
         - /matrix/
         - /thumb/
@@ -290,18 +301,21 @@ outlines:
         - rotate: 90
         - shift: [5 + 2.35, 3.75 + 0.974264069 - 2.35]
       expand: e
+  _key_bracket:
     - what: rectangle
+      size: [15, 15]
+      corner: 1.5
+    - what: rectangle
+      size: [16, 10.6]
+      operation: subtract
+  key_bracket:
+    - what: outline
+      name: _key_bracket
+      expand: e/2
       where:
         - /matrix/
         - /thumb/
-      size: 2.6
-      adjust.shift: [-8.275, -3.75]
-    - what: rectangle
-      where:
-        - /matrix/
-        - /thumb/
-      size: 2.6
-      adjust.shift: [3.275, -5.95]
+      operation: stack
   _key_sink:
     - what: circle
       radius: 1.7145
@@ -333,7 +347,7 @@ outlines:
       adjust.shift: [battery_width/2 - pitch, battery_height/2 + 3.73/2]
   mcu:
     - what: rectangle
-      size: [mcu_width - 2 * pitch, mcu_height]
+      size: [mcu_width - 2pitch, mcu_height]
       where: mcu
   mcu_zone:
     - what: outline
@@ -351,6 +365,26 @@ outlines:
       where: mcu
       expand: e
       joints: pointy
+  _ground_zone:
+    - what: rectangle
+      size: pitch
+    - what: rectangle
+      size: [pitch/4, pitch/2]
+      adjust.shift: [5pitch/8, 0]
+      expand: e
+      joints: pointy
+  right_ground_zone:
+    - what: outline
+      name: _ground_zone
+      where: mcu
+      origin:
+        - shift: [-mcu_width/2 + pitch/2, mcu_height/2 - pitch/2]
+        - rotate: 180
+  left_ground_zone:
+    - what: outline
+      name: _ground_zone
+      where: mcu
+      origin.shift: [-mcu_width/2 + pitch/2, -mcu_height/2 + pitch/2]
   cover:
     - what: rectangle
       size: [kx, ky]
