@@ -13,13 +13,13 @@
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
-        columns = <30>;
+        columns = <32>;
         rows = <1>;
         map = <
-             0  1  2  3  4 /**/ 19 18 17 16 15
-             5  6  7  8  9 /**/ 24 23 22 21 20
-               10 11 12    /**/    27 26 25
-                     13 14 /**/ 29 28
+             4  3  2  1  0 /**/ 31 30 29 28 27
+            12  5  6  7  8 /**/ 23 24 25 26 19
+               11 10  9    /**/    22 21 20
+                     13 14 /**/ 17 18
         >;
     };
 
@@ -27,25 +27,23 @@
         compatible = "zmk,kscan-gpio-direct";
         wakeup-source;
         label = "KSCAN";
-
         input-gpios =
-            <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&gpio0  2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-
-            <&gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&gpio0  2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&gpio0  9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+
             <&gpio1  6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-
-            <&gpio1  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&gpio1  4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-
+            <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&gpio1  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 };
