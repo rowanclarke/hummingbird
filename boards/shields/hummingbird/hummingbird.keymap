@@ -1,17 +1,137 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
+#define DEFAULT  1
+#define SYMBOL   2
+#define FUNCTION 3
+
 / {
+    behaviours {
+        ht: hold-tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };  
+    };
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-                &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I    &kp O    &kp P
-                &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K    &kp L    &kp M
-                         &kp Z    &kp X    &kp C                          &kp V    &kp B    &kp N
-                                           &kp ESC  &kp BSPC     &kp RET  &kp SPACE
-              >;
+                &ht LALT Q
+                &kp W
+                &kp E
+                &kp R
+                &kp T
+                &kp Y
+                &kp U
+                &kp I
+                &kp O
+                &ht RALT P
+
+                &ht LGUI Z
+                &ht LSHIFT A
+                &ht LCTRL S
+                &kp D
+                &kp F
+                &kp G
+                &kp H
+                &ht RCTRL J
+                &ht RSHIFT K
+                &ht RGUI L
+
+                &kp X
+                &kp C
+                &kp V
+                &kp B
+                &kp N
+                &kp M
+
+                &lt SYMBOL ESC
+                &kp BSPC
+                &kp SPACE
+                &lt FUNCTION RET
+            >;
+        };
+
+        symbol_layer {
+            bindings = <
+                &ht LALT N1
+                &kp N2
+                &kp N3
+                &kp N4
+                &kp N5
+                &kp N6
+                &kp N7
+                &kp N8
+                &kp N9
+                &ht RALT N0
+
+                &ht LGUI KP_EQUAL
+                &ht LSHIFT KP_DIVIDE
+                &ht LCTRL KP_MULTIPLY 
+                &kp KP_MINUS 
+                &kp KP_PLUS
+                &kp SEMI
+                &kp APOS
+                &ht RCTRL COMMA
+                &ht RSHIFT PERIOD
+                &ht RGUI SLASH
+
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+
+                &trans
+                &trans
+                &trans
+                &trans
+            >;            
+        };
+
+        function_layer {
+            bindings = <
+                &kp F1
+                &kp F2
+                &kp F3
+                &kp F4
+                &kp F5
+                &kp F6
+                &kp F7
+                &kp F8
+                &kp F9
+                &kp F10
+
+                &trans
+                &trans
+                &trans
+                &trans
+                &kp F11
+                &kp F12
+                &trans
+                &trans
+                &trans
+                &trans
+
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+                &trans
+
+                &trans
+                &trans
+                &trans
+                &trans
+                
+            >;            
         };
     };
 };
