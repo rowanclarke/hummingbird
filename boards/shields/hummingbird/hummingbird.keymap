@@ -2,9 +2,9 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
-#define DEFAULT  1
-#define SYMBOL   2
-#define FUNCTION 3
+#define DEFAULT  0
+#define SYMBOL   1
+#define FUNCTION 2
 
 / {
     behaviours {
