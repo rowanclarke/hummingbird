@@ -34,23 +34,23 @@
                 &kp O
                 &ht RALT P
 
-                &ht LGUI Z
-                &ht LSHIFT A
-                &ht LCTRL S
-                &kp D
+                &ht LGUI A
+                &ht LSHIFT S
+                &ht LCTRL D
                 &kp F
                 &kp G
                 &kp H
-                &ht RCTRL J
-                &ht RSHIFT K
-                &ht RGUI L
+                &kp J
+                &ht RCTRL K
+                &ht RSHIFT L
+                &ht RGUI M
 
+                &kp Z
                 &kp X
                 &kp C
                 &kp V
                 &kp B
                 &kp N
-                &kp M
 
                 &lt SYMBOL ESC
                 &kp BSPC
