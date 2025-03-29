@@ -142,10 +142,10 @@
 
                 &bt BT_CLR
                 &bt BT_NXT
-                &bt BT_PRV
                 &bootloader
-                &trans
-                &trans
+                &bootloader
+                &bt BT_PRV
+                &bt BT_CLR_ALL
 
                 &trans
                 &trans
