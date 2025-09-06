@@ -9,6 +9,7 @@
 #define DEFAULT  0
 #define SYMBOL   1
 #define FUNCTION 2
+#define FIRMWARE 3
 
 / {
     behaviours {
@@ -71,7 +72,7 @@
                 &kp N
                 &kp M
 
-                &lt SYMBOL ESC
+                &lt SYMBOL TAB
                 &kp BSPC
                 &kp SPACE
                 &lt FUNCTION RET
@@ -102,17 +103,17 @@
                 &htr RSHIFT PERIOD
                 &htr RGUI SLASH
 
-                &trans
-                &trans
-                &trans
-                &trans
-                &trans
-                &trans
+                &none
+                &none
+                &none
+                &kp LEFT_BRACKET
+                &kp RIGHT_BRACKET
+                &kp BACKSLASH
 
-                &trans
-                &trans
-                &trans
-                &trans
+                &none
+                &mo FIRMWARE
+                &none
+                &none
             >;            
         };
 
@@ -140,6 +141,44 @@
                 &htr RSHIFT UP
                 &htr RCTRL RIGHT
 
+                &kp ESC
+                &none
+                &none
+                &none
+                &none
+                &none
+
+                &none
+                &none
+                &mo FIRMWARE
+                &none
+            >;
+        };
+
+        firmware_layer {
+            bindings = <
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+                &none
+
                 &bt BT_CLR
                 &bt BT_NXT
                 &bootloader
@@ -147,11 +186,11 @@
                 &bt BT_PRV
                 &bt BT_CLR_ALL
 
-                &trans
-                &trans
-                &trans
-                &trans
-            >;            
+                &none
+                &none
+                &none
+                &none
+            >;
         };
     };
 };
