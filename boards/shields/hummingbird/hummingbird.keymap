@@ -17,24 +17,26 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            require-prior-idle-ms = <30>;
+            require-prior-idle-ms = <50>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release;
+            hold-while-undecided;
         };
 
         htr: hold-tap-right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            require-prior-idle-ms = <30>;
+            require-prior-idle-ms = <50>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
+            hold-while-undecided;
         };
     };
 
