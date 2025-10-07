@@ -92,28 +92,28 @@
                 &kp N9
                 &htr LALT N0
 
-                &htl LGUI KP_EQUAL
+                &htl LGUI KP_MULTIPLY 
                 &htl LSHIFT KP_DIVIDE
-                &htl LCTRL KP_MULTIPLY 
-                &kp KP_MINUS 
-                &kp KP_PLUS
+                &htl LCTRL KP_PLUS 
+                &kp KP_MINUS
+                &kp KP_EQUAL
                 &kp SEMI
                 &kp APOS
                 &htr RCTRL COMMA
                 &htr RSHIFT PERIOD
                 &htr RGUI SLASH
 
-                &none
-                &none
-                &none
+                &kp GRAVE
+                &kp NON_US_HASH
+                &kp UNDERSCORE 
                 &kp LEFT_BRACKET
                 &kp RIGHT_BRACKET
-                &kp BACKSLASH
+                &kp NON_US_BACKSLASH
 
                 &none
                 &mo FIRMWARE
-                &none
-                &none
+                &trans
+                &trans
             >;            
         };
 
@@ -141,15 +141,15 @@
                 &htr RSHIFT UP
                 &htr RCTRL RIGHT
 
-                &kp ESC
+                &none
                 &none
                 &none
                 &none
                 &none
                 &none
 
-                &none
-                &none
+                &kp ESC
+                &kp DEL
                 &mo FIRMWARE
                 &none
             >;
